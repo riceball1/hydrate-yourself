@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydrate Yourself</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2563eb;
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .progress-section {
+            margin-bottom: 40px;
+        }
+
+        .progress-label {
+            color: #475569;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-bar-container {
+            background: #e0e7ff;
+            border-radius: 12px;
+            height: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .amount-display {
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .current-amount {
+            font-size: 56px;
+            font-weight: 700;
+            color: #2563eb;
+            line-height: 1;
+        }
+
+        .unit {
+            font-size: 18px;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .target-amount {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #e0e7ff;
+            color: #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: #c7d2fe;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .current-amount {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hydrate Yourself</h1>
+        <p class="subtitle">Stay hydrated, stay healthy</p>
+
+        <div class="progress-section">
+            <div class="progress-label">
+                <span>Today's Progress</span>
+                <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="amount-display">
+            <div class="current-amount" id="current-amount">0</div>
+            <div class="unit">ml</div>
+            <div class="target-amount">of <span id="target-amount">2000</span> ml</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" id="add-water-btn">
+                Add Water
+            </button>
+            <button class="btn btn-secondary" id="reset-btn">
+                Reset
+            </button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="today-glasses">0</div>
+                <div class="stat-label">Glasses Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="streak-days">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TODO: Implement hydration tracking functionality
+        // 
+        // Suggested implementation:
+        // 1. Track daily water intake
+        // 2. Store data in localStorage
+        // 3. Update progress bar and statistics
+        // 4. Handle add water button clicks
+        // 5. Handle reset button clicks
+        // 6. Calculate and display progress percentage
+        // 7. Track daily streaks
+        // 8. Reset daily progress at midnight
+        
+        // Example structure:
+        // const state = {
+        //     currentAmount: 0,
+        //     targetAmount: 2000,
+        //     glassesToday: 0,
+        //     streakDays: 0
+        // };
+        
+        // Add event listeners for buttons
+        // document.getElementById('add-water-btn').addEventListener('click', () => {
+        //     // Your implementation here
+        // });
+    </script>
+</body>
+</html>
