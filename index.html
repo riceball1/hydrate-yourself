@@ -207,10 +207,10 @@
         </div>
 
         <div class="actions">
-            <button class="btn btn-primary" id="add-water-btn">
+            <button class="btn btn-primary" id="add-water-btn" onclick="addWater()">
                 Add Water
             </button>
-            <button class="btn btn-secondary" id="reset-btn">
+            <button class="btn btn-secondary" id="reset-btn" onclick="resetHydration()">
                 Reset
             </button>
         </div>
@@ -228,6 +228,48 @@
     </div>
 
     <script>
+        const GLASS_ML = 250;
+        let totalGlasses = 0;
+        let totalCurrentAmount = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Code to run when the DOM is ready
+            console.log("DOM is ready!");
+            setInitialProgress();
+        });
+
+
+        function setInitialProgress() {
+            const glassesToday = document.getElementById('today-glasses');
+            glassesToday.innerHTML = 1
+        }
+
+        function resetHydration() {
+            totalGlasses = 0;
+            const glassesToday = document.getElementById('today-glasses');
+            glassesToday.innerHTML = totalGlasses
+        }
+
+        function addWater() {
+            if (totalGlasses >= 8) return
+            totalGlasses += 1
+            totalCurrentAmount += GLASS_ML;
+            updateGlassesToday();
+            updateCurrentAmount();
+       
+        }
+
+        function updateGlassesToday() {
+            const glassesToday = document.getElementById('today-glasses');
+            glassesToday.innerHTML = totalGlasses
+        }
+
+        function updateCurrentAmount() {
+            const currentAmount = document.getElementById('current-amount');
+            currentAmount.innerHTML = totalCurrentAmount;
+        }
+
+
         // TODO: Implement hydration tracking functionality
         // 
         // Suggested implementation:
