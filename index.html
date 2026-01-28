@@ -233,7 +233,6 @@
         let totalCurrentAmount = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Code to run when the DOM is ready
             console.log("DOM is ready!");
             setInitialProgress();
         });
@@ -246,6 +245,7 @@
 
         function resetHydration() {
             totalGlasses = 0;
+            totalCurrentAmount = 0;
             const glassesToday = document.getElementById('today-glasses');
             glassesToday.innerHTML = totalGlasses
         }
