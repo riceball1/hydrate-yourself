@@ -240,7 +240,7 @@
 
         function setInitialProgress() {
             const glassesToday = document.getElementById('today-glasses');
-            glassesToday.innerHTML = 1
+            glassesToday.innerHTML = 0
         }
 
         function resetHydration() {
@@ -272,28 +272,13 @@
 
         // TODO: Implement hydration tracking functionality
         // 
-        // Suggested implementation:
-        // 1. Track daily water intake
-        // 2. Store data in localStorage
-        // 3. Update progress bar and statistics
-        // 4. Handle add water button clicks
-        // 5. Handle reset button clicks
+
         // 6. Calculate and display progress percentage
         // 7. Track daily streaks
         // 8. Reset daily progress at midnight
+        // use localstorage to be able to store the daily information
         
-        // Example structure:
-        // const state = {
-        //     currentAmount: 0,
-        //     targetAmount: 2000,
-        //     glassesToday: 0,
-        //     streakDays: 0
-        // };
-        
-        // Add event listeners for buttons
-        // document.getElementById('add-water-btn').addEventListener('click', () => {
-        //     // Your implementation here
-        // });
+ 
     </script>
 </body>
 </html>
