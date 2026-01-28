@@ -246,8 +246,8 @@
         function resetHydration() {
             totalGlasses = 0;
             totalCurrentAmount = 0;
-            const glassesToday = document.getElementById('today-glasses');
-            glassesToday.innerHTML = totalGlasses
+            updateCurrentAmount();
+            updateGlassesToday();
         }
 
         function addWater() {
