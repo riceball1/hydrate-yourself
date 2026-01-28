@@ -1,2 +1,2 @@
-# hydration-yourself
+# hydrate-yourself
 a simple hydration app to track your daily hydration
