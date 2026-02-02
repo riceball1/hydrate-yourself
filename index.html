@@ -228,9 +228,13 @@
     </div>
 
     <script>
+        const MAX_ML = 2000
         const GLASS_ML = 250;
+        const MAX_GLASSES = MAX_ML/ GLASS_ML; 
+        // Idea: config group together into one object
         let totalGlasses = 0;
         let totalCurrentAmount = 0;
+        let progressWidth = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
             console.log("DOM is ready!");
@@ -246,14 +250,19 @@
         function resetHydration() {
             totalGlasses = 0;
             totalCurrentAmount = 0;
+            progressWidth = 0;
             updateCurrentAmount();
             updateGlassesToday();
+            updateProgressBar();
         }
 
         function addWater() {
-            if (totalGlasses >= 8) return
+            if (totalGlasses >= MAX_GLASSES) return
             totalGlasses += 1
             totalCurrentAmount += GLASS_ML;
+            const currentProgressWidth = (totalGlasses/ MAX_GLASSES) * 100;
+            progressWidth = currentProgressWidth
+            updateProgressBar();
             updateGlassesToday();
             updateCurrentAmount();
        
@@ -269,11 +278,19 @@
             currentAmount.innerHTML = totalCurrentAmount;
         }
 
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar')
+            progressBar.style.width = `${progressWidth}%`;
+        }
+
+        function storeLocalData() {
+            // storing the current progress 
+        }
+
 
         // TODO: Implement hydration tracking functionality
         // 
 
-        // 6. Calculate and display progress percentage
         // 7. Track daily streaks
         // 8. Reset daily progress at midnight
         // use localstorage to be able to store the daily information
